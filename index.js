@@ -118,7 +118,7 @@ class Lambdasian {
 		this.location = attributes.location;
 	}
 	speak() {
-		return `Hello my name is ${this.name}, I am from ${this.location}.`;
+		return `Hello, my name is ${this.name}, I am from ${this.location}.`;
 	}
 }
 
@@ -175,11 +175,11 @@ class Student extends Lambdasian {
 	listSubjects() {
 		return this.favSubjects;
 	}
-	PRAssignment(student, subject) {
-		return `${student.name} has submitted a PR for ${subject}`;
+	PRAssignment(subject) {
+		return `${this.name} has submitted a PR for ${subject}`;
 	}
-	sprintChallenge(student, subject) {
-		return `${student.name} has begun sprint challenge on ${subject}`;
+	sprintChallenge(subject) {
+		return `${this.name} has begun sprint challenge on ${subject}`;
 	}
 }
 
@@ -196,7 +196,19 @@ class Student extends Lambdasian {
           + `standUp` a method that takes in a slack channel and returns `{name} announces to {channel}, @channel standy times!`
           + `debugsCode` a method that takes in a student object and a subject and returns `{name} debugs {student.name}'s code on {subject}`
   */
-class ProjectManager {}
+class ProjectManager extends Instructor {
+	constructor(attributes) {
+		super(attributes);
+		this.gradClassName = attributes.gradClassName;
+    this.favInstructor = attributes.favInstructor;
+	}
+  standUp(channel){
+    return `${this.name} announces to ${channel}, @channel standy times!`
+  }
+  debugsCode(student, subject){
+    return `${this.name} debugs ${student.name}'s code on ${subject}`
+  }
+}
 /*
     STRETCH PROBLEM (no tests!)
       - Extend the functionality of the Student by adding a prop called grade and setting it equal to a number between 1-100.
