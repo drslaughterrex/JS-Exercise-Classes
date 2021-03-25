@@ -40,7 +40,28 @@ class Airplane {
           + It should return a string with `name` and `age`. Example: "Mary, 50"
   */
 
-class Person {}
+class Person {
+	constructor(name, age) {
+		this.name = "Neo";
+		this.age = 20;
+		this.stomach = [];
+	}
+
+	eat(edible) {
+		if (this.stomach.length < 10) {
+			this.stomach.push(edible);
+			return this.eat;
+		} else if (this.stomach.length === 10) {
+			return "Can't eat any more!";
+		}
+	}
+	poop() {
+		this.stomach.splice(0, this.stomach.length);
+	}
+	toString() {
+		return `${this.name}, ${this.age}`;
+	}
+}
 
 /*
     TASK 2
@@ -56,8 +77,28 @@ class Person {}
           + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
   */
 
-class Car {}
-
+class Car {
+  constructor(model, mpg){
+    this.model = model;
+    this.milesPerGallon = mpg;
+    this.tank = 0;
+    this.odometer = 0;
+  }
+  fill(gallons) {
+    this.tank = this.tank + gallons;
+  };
+  drive(distance) {
+    const driveableMiles = this.tank * this.milesPerGallon;
+    if (distance <= driveableMiles) {
+      this.odometer = this.odometer + distance;
+      this.tank = this.tank - distance / this.milesPerGallon;
+    } else {
+      this.odometer = this.odometer + driveableMiles;
+      this.tank = 0;
+      return `I ran out of fuel at ${this.odometer} miles!`;
+    }
+}
+}
 /*
     TASK 3
       - Write a Lambdasian class.
